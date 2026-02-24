@@ -83,7 +83,7 @@ body { font-family:'Heebo',sans-serif; background:#f5f5f8; color:#333; line-heig
 /* ── Research box widget ── */
 .research-box-widget {
   background:#fff; border:1px solid #e0e0e0; border-radius:12px;
-  padding:24px; margin-bottom:16px;
+  padding:24px; margin-bottom:48px;
   box-shadow:0 1px 4px rgba(0,0,0,0.04);
 }
 .research-box-widget h4 { font-size:16px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
@@ -158,47 +158,23 @@ footer {
   <div class="hero-icon">&#x1F50D;</div>
   <h1>מחקר חינוך ואידיאולוגיה</h1>
   <div class="subtitle">מפת הפרויקטים — מחקר השפעה אידיאולוגית על מערכת החינוך הישראלית</div>
-  <div class="meta">15 פרויקטים &middot; 12 אתרים פעילים &middot; עודכן פברואר 2026</div>
+  <div class="meta">עודכן פברואר 2026</div>
 </div>
 
 <div class="container">
 
-  <!-- ═══ 1. מחקר נתונים — אתרים גדולים ═══ -->
-  <div class="section-title"><span class="icon">&#x1F4CA;</span> מחקר נתונים — אתרים גדולים</div>
-  <div class="projects">
-
-    <a class="card" href="https://aosshalem-dev.github.io/derug-arim/" target="_blank">
-      <div class="card-icon live">&#x1F3D9;</div>
-      <div class="card-body">
-        <h3>דירוג ערים — מדד משולב</h3>
-        <div class="desc">דירוג 18 ערים ישראליות לפי חשיפה לתוכניות חינוכיות, פרוטוקולים עירוניים, דפוסי הצבעה וסיקור תקשורתי</div>
-        <div class="tags">
-          <span class="tag">18 ערים</span>
-          <span class="tag">מדד משולב</span>
-          <span class="tag">פרוטוקולים</span>
-          <span class="tag">בחירות</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
-    <a class="card" href="https://aosshalem-dev.github.io/educational-programs/" target="_blank">
-      <div class="card-icon live">&#x1F4DA;</div>
-      <div class="card-body">
-        <h3>דירוג ערים — תוכניות חינוכיות</h3>
-        <div class="desc">פירוט התוכניות החינוכיות לפי עיר — ניתוח עומק של תוכן, מקורות מימון ורמת חדירה</div>
-        <div class="tags">
-          <span class="tag">תוכניות</span>
-          <span class="tag">ניתוח עומק</span>
-          <span class="tag">GitHub Pages</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
+  <!-- ═══ Research Box — TOP ═══ -->
+  <div class="research-box-widget">
+    <h4>&#x1F4E5; תיבת מחקר פתוחה</h4>
+    <div class="desc">תיבת הזנה לממצאי מחקר — append-only. כל רשומה נשמרת עם חותמת זמן ולא ניתנת למחיקה או עריכה.</div>
+    <div class="entry-count" id="research-box-count">טוען...</div>
+    <div class="btn-row">
+      <a class="btn primary" href="https://gnostocracy.com/ranking/research_box.html" target="_blank">הוסף ממצא</a>
+      <a class="btn secondary" href="https://gnostocracy.com/ranking/research_box.php" target="_blank">צפה בנתונים (JSON)</a>
+    </div>
   </div>
 
-  <!-- ═══ 2. מיניסייטים ממוקדים ═══ -->
+  <!-- ═══ 1. מיניסייטים ממוקדים ═══ -->
   <div class="section-title"><span class="icon">&#x1F3AF;</span> מיניסייטים ממוקדים</div>
   <div class="projects">
 
@@ -287,20 +263,6 @@ footer {
       <div class="card-status live">&#x2022; באוויר</div>
     </a>
 
-    <a class="card" href="https://aosshalem-dev.github.io/bituach-leumi-research/" target="_blank">
-      <div class="card-icon live">&#x1F4C4;</div>
-      <div class="card-body">
-        <h3>מחקר ביטוח לאומי</h3>
-        <div class="desc">ניתוח מדיניות ביטוח לאומי — רגולציה, תקנות ומנגנוני השפעה על מערכת הרווחה</div>
-        <div class="tags">
-          <span class="tag">ביטוח לאומי</span>
-          <span class="tag">רגולציה</span>
-          <span class="tag">רווחה</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
     <a class="card" href="https://aosshalem-dev.github.io/safeschool/" target="_blank">
       <div class="card-icon live">&#x1F3EB;</div>
       <div class="card-body">
@@ -317,7 +279,7 @@ footer {
 
   </div>
 
-  <!-- ═══ 3. מסגרת ופילוסופיה ═══ -->
+  <!-- ═══ 2. מסגרת ופילוסופיה ═══ -->
   <div class="section-title"><span class="icon">&#x1F52D;</span> מסגרת ופילוסופיה</div>
   <div class="projects">
 
@@ -351,7 +313,7 @@ footer {
 
   </div>
 
-  <!-- ═══ 4. כלי מחקר Gemini ═══ -->
+  <!-- ═══ 3. כלי מחקר Gemini ═══ -->
   <div class="section-title"><span class="icon">&#x2728;</span> כלי מחקר Gemini</div>
   <div class="projects">
 
@@ -398,38 +360,7 @@ footer {
 
   </div>
 
-  <!-- Research Box Widget -->
-  <div class="research-box-widget">
-    <h4>&#x1F4E5; תיבת מחקר פתוחה</h4>
-    <div class="desc">תיבת הזנה לממצאי מחקר — append-only. כל רשומה נשמרת עם חותמת זמן ולא ניתנת למחיקה או עריכה.</div>
-    <div class="entry-count" id="research-box-count">טוען...</div>
-    <div class="btn-row">
-      <a class="btn primary" href="https://gnostocracy.com/ranking/research_box.html" target="_blank">הוסף ממצא</a>
-      <a class="btn secondary" href="https://gnostocracy.com/ranking/research_box.php" target="_blank">צפה בנתונים (JSON)</a>
-    </div>
-  </div>
-
-  <!-- ═══ 5. כלים ═══ -->
-  <div class="section-title"><span class="icon">&#x1F527;</span> כלים</div>
-  <div class="projects">
-
-    <a class="card" href="https://www.yisumatica.org.il/school-funding/" target="_blank">
-      <div class="card-icon tool">&#x1F4B0;</div>
-      <div class="card-body">
-        <h3>מעקב תקציב בית ספר</h3>
-        <div class="desc">נתוני מימון מית"ר לבית ספר 144097 — שקיפות תקציבית במערכת החינוך</div>
-        <div class="tags">
-          <span class="tag">מית"ר</span>
-          <span class="tag">תקציב</span>
-          <span class="tag">שקיפות</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
-  </div>
-
-  <!-- ═══ 6. אקוסיסטם ═══ -->
+  <!-- ═══ 4. אקוסיסטם ═══ -->
   <div class="ecosystem">
     <h3>מבנה האקוסיסטם</h3>
     <div class="eco-layers">
@@ -459,18 +390,9 @@ footer {
       <div class="eco-layer">
         <div class="eco-label empirical">ראיות אמפיריות</div>
         <div class="eco-items">
-          <span class="eco-item">דירוג 18 ערים</span>
-          <span class="eco-item">תוכניות חינוכיות</span>
-          <span class="eco-item">מעקב תקציבי</span>
+          <span class="eco-item">דירוג ערים — תוכניות חינוכיות</span>
           <span class="eco-item">ייצוג קורבנות</span>
-        </div>
-      </div>
-      <div class="eco-arrow">&#x2193;</div>
-      <div class="eco-layer">
-        <div class="eco-label mapping">מוסדות מקצועיים</div>
-        <div class="eco-items">
           <span class="eco-item">IMA — אתיקה רפואית</span>
-          <span class="eco-item">ביטוח לאומי</span>
         </div>
       </div>
       <div class="eco-arrow">&#x2193;</div>
@@ -482,6 +404,26 @@ footer {
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ═══ 5. דירוג ערים — תוכניות חינוכיות (bottom) ═══ -->
+  <div class="section-title"><span class="icon">&#x1F4DA;</span> דירוג ערים — תוכניות חינוכיות</div>
+  <div class="projects">
+
+    <a class="card" href="https://aosshalem-dev.github.io/educational-programs/" target="_blank">
+      <div class="card-icon live">&#x1F4DA;</div>
+      <div class="card-body">
+        <h3>דירוג ערים — תוכניות חינוכיות</h3>
+        <div class="desc">פירוט התוכניות החינוכיות לפי עיר — ניתוח עומק של תוכן, מקורות מימון ורמת חדירה</div>
+        <div class="tags">
+          <span class="tag">תוכניות</span>
+          <span class="tag">ניתוח עומק</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
+      </div>
+      <div class="card-status live">&#x2022; באוויר</div>
+    </a>
+
   </div>
 
 </div>
