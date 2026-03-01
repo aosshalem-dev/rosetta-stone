@@ -9,35 +9,40 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Heebo',sans-serif; background:#f5f5f8; color:#333; line-height:1.7; min-height:100vh; }
 
-/* ── Hero ── */
 .hero {
   text-align:center; padding:60px 20px 40px;
   background:linear-gradient(135deg, #fff 0%, #f0ebe4 50%, #fff 100%);
   border-bottom:2px solid #e8e0d6;
 }
 .hero-icon { font-size:48px; margin-bottom:12px; }
-.hero h1 {
-  font-size:clamp(26px,5vw,44px); font-weight:900; color:#1a1a2e;
-  margin-bottom:8px;
-}
-.hero .subtitle {
-  font-size:clamp(14px,2.5vw,18px); color:#c0392b; font-weight:400;
-  max-width:700px; margin:0 auto 20px;
-}
+.hero h1 { font-size:clamp(26px,5vw,44px); font-weight:900; color:#1a1a2e; margin-bottom:8px; }
+.hero .subtitle { font-size:clamp(14px,2.5vw,18px); color:#c0392b; font-weight:400; max-width:700px; margin:0 auto 12px; }
+.hero .stats { font-size:14px; color:#666; margin-bottom:4px; }
 .hero .meta { font-size:13px; color:#999; }
 
-/* ── Container ── */
 .container { max-width:1000px; margin:0 auto; padding:40px 16px 60px; }
 
-/* ── Section titles ── */
+/* Filter bar */
+.filter-bar { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; justify-content:center; }
+.filter-btn {
+  padding:6px 16px; border-radius:20px; border:1px solid #ddd; background:#fff;
+  font-family:inherit; font-size:13px; cursor:pointer; transition:0.2s; color:#666;
+}
+.filter-btn:hover { border-color:#c0392b; color:#c0392b; }
+.filter-btn.active { background:#c0392b; color:#fff; border-color:#c0392b; }
+.filter-btn .count { font-size:11px; opacity:0.7; margin-right:4px; }
+
 .section-title {
   font-size:20px; font-weight:700; color:#c0392b; margin-bottom:20px;
   padding-bottom:8px; border-bottom:1px solid #ddd;
   display:flex; align-items:center; gap:10px;
 }
 .section-title .icon { font-size:22px; }
+.section-title .count-badge {
+  font-size:12px; font-weight:600; background:#f0ebe4; color:#888;
+  padding:2px 10px; border-radius:10px;
+}
 
-/* ── Project cards ── */
 .projects { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:48px; }
 
 .card {
@@ -48,17 +53,11 @@ body { font-family:'Heebo',sans-serif; background:#f5f5f8; color:#333; line-heig
   box-shadow:0 1px 4px rgba(0,0,0,0.04);
 }
 .card:hover { border-color:#c0392b; box-shadow:0 4px 16px rgba(0,0,0,0.08); transform:translateY(-2px); }
-.card.no-link { cursor:default; }
-.card.no-link:hover { transform:none; box-shadow:0 1px 4px rgba(0,0,0,0.04); border-color:#e0e0e0; }
 
 .card-icon {
   width:56px; height:56px; border-radius:12px; display:flex;
-  align-items:center; justify-content:center; font-size:28px;
-  flex-shrink:0;
+  align-items:center; justify-content:center; font-size:28px; flex-shrink:0;
 }
-.card-icon.live { background:#e8f8f0; }
-.card-icon.local { background:#fef3ec; }
-.card-icon.research { background:#eaf2fb; }
 
 .card-body h3 { font-size:17px; font-weight:700; color:#1a1a2e; margin-bottom:4px; }
 .card-body .desc { font-size:14px; color:#666; margin-bottom:8px; }
@@ -67,60 +66,95 @@ body { font-family:'Heebo',sans-serif; background:#f5f5f8; color:#333; line-heig
   font-size:11px; padding:2px 10px; border-radius:10px;
   background:#f0ebe4; color:#666; white-space:nowrap;
 }
+.card-body .topic-tag {
+  font-size:10px; padding:2px 8px; border-radius:10px;
+  font-weight:600; white-space:nowrap;
+}
 
 .card-status {
   font-size:12px; font-weight:700; padding:6px 14px; border-radius:20px;
   white-space:nowrap; flex-shrink:0;
 }
-.card-status.live { background:#e8f8f0; color:#27ae60; }
-.card-status.local { background:#fef3ec; color:#e67e22; }
-.card-status.research { background:#eaf2fb; color:#2980b9; }
 
-/* ── Ecosystem diagram ── */
+/* Topic colors */
+.topic-research-philosophical { background:#f3eeff; color:#7c3aed; }
+.topic-research-institutional { background:#eaf2fb; color:#2980b9; }
+.topic-research-pedagogy { background:#fef3ec; color:#e67e22; }
+.topic-research-empirical { background:#e8f8f0; color:#27ae60; }
+.topic-research-org { background:#fce4ec; color:#c0392b; }
+.topic-tools { background:#f0f0f0; color:#666; }
+.topic-games { background:#fff8e1; color:#f57f17; }
+.topic-personal { background:#e8eaf6; color:#3f51b5; }
+
+.icon-bg-research-philosophical { background:#f3eeff; }
+.icon-bg-research-institutional { background:#eaf2fb; }
+.icon-bg-research-pedagogy { background:#fef3ec; }
+.icon-bg-research-empirical { background:#e8f8f0; }
+.icon-bg-research-org { background:#fce4ec; }
+.icon-bg-tools { background:#f0f0f0; }
+.icon-bg-games { background:#fff8e1; }
+.icon-bg-personal { background:#e8eaf6; }
+
+/* Research box widget */
+.research-box-widget {
+  background:#fff; border:1px solid #e0e0e0; border-radius:12px;
+  padding:24px; margin-bottom:48px; box-shadow:0 1px 4px rgba(0,0,0,0.04);
+}
+.research-box-widget h4 { font-size:16px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
+.research-box-widget .desc { font-size:14px; color:#666; margin-bottom:12px; }
+.research-box-widget .entry-count { font-size:13px; color:#7c3aed; font-weight:500; margin-bottom:12px; }
+.research-box-widget .btn-row { display:flex; gap:12px; }
+.research-box-widget a.btn {
+  display:inline-block; padding:8px 20px; border-radius:8px;
+  text-decoration:none; font-size:14px; font-weight:600; transition:0.2s;
+}
+.research-box-widget a.btn.primary { background:#7c3aed; color:#fff; }
+.research-box-widget a.btn.primary:hover { background:#6d28d9; }
+.research-box-widget a.btn.secondary { background:#f3eeff; color:#7c3aed; border:1px solid #e0d5f5; }
+.research-box-widget a.btn.secondary:hover { background:#ede5ff; }
+
+/* Gemini section */
+.gemini-section .card-icon { background:#f3eeff; }
+.gemini-status { background:#f3eeff; color:#7c3aed; }
+
+/* Ecosystem */
 .ecosystem {
   background:#fff; border:1px solid #e0e0e0; border-radius:12px;
-  padding:32px; margin-bottom:48px;
-  box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  padding:32px; margin-bottom:48px; box-shadow:0 1px 4px rgba(0,0,0,0.04);
 }
 .ecosystem h3 { color:#1a1a2e; font-size:18px; margin-bottom:20px; text-align:center; }
-
 .eco-layers { display:flex; flex-direction:column; gap:12px; }
 .eco-layer {
   display:flex; align-items:center; gap:12px; padding:12px 16px;
   border-radius:8px; background:#fafafa; border:1px solid #eee;
 }
 .eco-label {
-  min-width:120px; font-size:12px; font-weight:700; text-transform:uppercase;
+  min-width:140px; font-size:12px; font-weight:700; text-transform:uppercase;
   letter-spacing:1px; flex-shrink:0;
 }
 .eco-label.foundation { color:#8e44ad; }
 .eco-label.pipeline { color:#2980b9; }
 .eco-label.pedagogy { color:#c0392b; }
-.eco-label.mapping { color:#e67e22; }
 .eco-label.empirical { color:#27ae60; }
-.eco-label.tools { color:#999; }
-
+.eco-label.gemini-l { color:#7c3aed; }
 .eco-items { display:flex; flex-wrap:wrap; gap:8px; }
-.eco-item {
-  font-size:13px; padding:4px 12px; border-radius:6px; background:#f0ebe4; color:#444;
-}
-.eco-arrow {
-  text-align:center; color:#ccc; font-size:18px; padding:0 0 0 132px;
-}
+.eco-item { font-size:13px; padding:4px 12px; border-radius:6px; background:#f0ebe4; color:#444; }
+.eco-arrow { text-align:center; color:#ccc; font-size:18px; padding:0 0 0 152px; }
 
-/* ── Footer ── */
 footer {
   text-align:center; padding:32px 20px; border-top:1px solid #ddd;
   color:#aaa; font-size:12px; background:#fff;
 }
 
-/* ── Responsive ── */
+.hidden { display:none !important; }
+
 @media(max-width:700px) {
   .card { grid-template-columns:1fr; gap:12px; }
   .card-icon { width:40px; height:40px; font-size:20px; }
   .card-status { justify-self:start; }
   .eco-layer { flex-direction:column; align-items:start; gap:8px; }
   .eco-arrow { padding:0; }
+  .research-box-widget .btn-row { flex-direction:column; }
 }
 </style>
 </head>
@@ -130,149 +164,68 @@ footer {
   <div class="hero-icon">&#x1F50D;</div>
   <h1>מחקר חינוך ואידיאולוגיה</h1>
   <div class="subtitle">מפת הפרויקטים — מחקר השפעה אידיאולוגית על מערכת החינוך הישראלית</div>
-  <div class="meta">8 פרויקטים &middot; 6 אתרים פעילים &middot; עודכן פברואר 2026</div>
+  <div class="stats" id="hero-stats"></div>
+  <div class="meta" id="hero-meta"></div>
 </div>
 
 <div class="container">
 
-  <!-- ── Live Sites ── -->
-  <div class="section-title"><span class="icon">&#x1F30D;</span> אתרים פעילים</div>
-  <div class="projects">
+  <!-- Filter bar -->
+  <div class="filter-bar" id="filter-bar"></div>
 
-    <a class="card" href="https://aosshalem-dev.github.io/education-minisite/" target="_blank">
-      <div class="card-icon live">&#x1F3DB;</div>
-      <div class="card-body">
-        <h3>חינוך ואידיאולוגיה — מיניסייט</h3>
-        <div class="desc">צינור ההשפעה מ-UNESCO/SDG4/GCED דרך פדגוגיה ביקורתית ואקטיביסטית אל מערכת החינוך הישראלית</div>
-        <div class="tags">
-          <span class="tag">UNESCO</span>
-          <span class="tag">SDG4</span>
-          <span class="tag">פדגוגיה ביקורתית</span>
-          <span class="tag">GitHub Pages</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
+  <!-- Dynamic sections rendered here -->
+  <div id="sections-container"></div>
 
-    <a class="card" href="https://aosshalem-dev.github.io/derug-arim/" target="_blank">
-      <div class="card-icon live">&#x1F3D9;</div>
-      <div class="card-body">
-        <h3>דירוג ערים — מדד משולב</h3>
-        <div class="desc">דירוג 18 ערים ישראליות לפי חשיפה לתוכניות חינוכיות, פרוטוקולים עירוניים, דפוסי הצבעה וסיקור תקשורתי</div>
-        <div class="tags">
-          <span class="tag">18 ערים</span>
-          <span class="tag">מדד משולב</span>
-          <span class="tag">פרוטוקולים</span>
-          <span class="tag">בחירות</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
-    <a class="card" href="https://aosshalem-dev.github.io/educational-programs/" target="_blank">
-      <div class="card-icon live">&#x1F4DA;</div>
-      <div class="card-body">
-        <h3>דירוג ערים — תוכניות חינוכיות</h3>
-        <div class="desc">פירוט התוכניות החינוכיות לפי עיר — ניתוח עומק של תוכן, מקורות מימון ורמת חדירה</div>
-        <div class="tags">
-          <span class="tag">תוכניות</span>
-          <span class="tag">ניתוח עומק</span>
-          <span class="tag">GitHub Pages</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
-    <a class="card" href="https://www.yisumatica.org.il/school-funding/" target="_blank">
-      <div class="card-icon live">&#x1F4B0;</div>
-      <div class="card-body">
-        <h3>מעקב תקציב בית ספר</h3>
-        <div class="desc">נתוני מימון מית"ר לבית ספר 144097 — שקיפות תקציבית במערכת החינוך</div>
-        <div class="tags">
-          <span class="tag">מית"ר</span>
-          <span class="tag">תקציב</span>
-          <span class="tag">שקיפות</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
-    <a class="card" href="https://aosshalem-dev.github.io/rosetta-stone/" target="_blank">
-      <div class="card-icon live">&#x1F5FF;</div>
-      <div class="card-body">
-        <h3>אבן רוזטה הפרוגרסיבית</h3>
-        <div class="desc">ניתוח השוואתי: כשמאמר אקדמי מ-2020 חושף את המשמעות האמיתית של דו"ח ממשלתי מ-2024 — מיפוי שפה בין גרסת הקהילה האקדמית לגרסת משרד החינוך</div>
-        <div class="tags">
-          <span class="tag">Ketko-Ayali</span>
-          <span class="tag">מיפוי שפה</span>
-          <span class="tag">פדגוגיה אקטיביסטית</span>
-          <span class="tag">REACT</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
-    <a class="card" href="https://aosshalem-dev.github.io/antropology-vaad-horim/" target="_blank">
-      <div class="card-icon live">&#x1F50E;</div>
-      <div class="card-body">
-        <h3>אנתרופולוגיה של השתקה — מועצת הורים</h3>
-        <div class="desc">תיעוד וניתוח 10 שיטות השתקה בקבוצת מועצת הורים בית-ספרית, דרך הפריזמה של "סובלנות מדכאת" (מרקוזה, 1965) — 61 מקרים מתועדים לאורך 5 חודשים</div>
-        <div class="tags">
-          <span class="tag">מרקוזה</span>
-          <span class="tag">סובלנות מדכאת</span>
-          <span class="tag">השתקה</span>
-          <span class="tag">מועצת הורים</span>
-          <span class="tag">מקרה בוחן</span>
-        </div>
-      </div>
-      <div class="card-status live">&#x2022; באוויר</div>
-    </a>
-
+  <!-- Research box (static) -->
+  <div class="research-box-widget">
+    <h4>&#x1F4E5; תיבת מחקר פתוחה</h4>
+    <div class="desc">תיבת הזנה לממצאי מחקר — append-only. כל רשומה נשמרת עם חותמת זמן ולא ניתנת למחיקה או עריכה.</div>
+    <div class="entry-count" id="research-box-count">טוען...</div>
+    <div class="btn-row">
+      <a class="btn primary" href="https://gnostocracy.com/ranking/research_box.html" target="_blank">הוסף ממצא</a>
+      <a class="btn secondary" href="https://gnostocracy.com/ranking/research_box.php" target="_blank">צפה בנתונים (JSON)</a>
+    </div>
   </div>
 
-  <!-- ── Research Only ── -->
-  <div class="section-title"><span class="icon">&#x1F4D1;</span> מחקר (ללא אתר)</div>
-  <div class="projects">
-
-    <div class="card no-link">
-      <div class="card-icon research">&#x1F9EC;</div>
+  <!-- Gemini tools (static) -->
+  <div class="section-title"><span class="icon">&#x2728;</span> כלי מחקר Gemini</div>
+  <div class="projects gemini-section">
+    <a class="card" href="https://gnostocracy.com/ranking/research_input/programs.html" target="_blank">
+      <div class="card-icon" style="background:#f3eeff">&#x1F4DD;</div>
       <div class="card-body">
-        <h3>צינור SEL — האקדמיה הישראלית למדעים</h3>
-        <div class="desc">מחקר צינור ההשפעה של SEL (למידה חברתית-רגשית): מ-UNESCO/CASEL דרך יוזמה של האקדמיה למדעים, למשרד החינוך, שפ"י, הכשרת מורים והכיתה</div>
-        <div class="tags">
-          <span class="tag">SEL</span>
-          <span class="tag">CASEL</span>
-          <span class="tag">יוזמה</span>
-          <span class="tag">שפ"י</span>
-          <span class="tag">מחקר</span>
-        </div>
+        <h3>מחקר עומק — תוכניות</h3>
+        <div class="desc">ממשק הזנת מחקר עומק לתוכניות חינוכיות — תוצאות Gemini מוזנות לבסיס הנתונים</div>
+        <div class="tags"><span class="tag">Gemini</span><span class="tag">תוכניות</span></div>
       </div>
-      <div class="card-status research">&#x25CB; מחקר</div>
-    </div>
-
-    <div class="card no-link">
-      <div class="card-icon research">&#x1F52D;</div>
+      <div class="card-status gemini-status">&#x2022; Gemini</div>
+    </a>
+    <a class="card" href="https://gnostocracy.com/ranking/research_input/cities.html" target="_blank">
+      <div class="card-icon" style="background:#f3eeff">&#x1F3D9;</div>
       <div class="card-body">
-        <h3>עדשת הליבה — מסגרת פילוסופית</h3>
-        <div class="desc">תשתית אנליטית לזיהוי פתולוגיות אידיאולוגיות — 7 דפוסים מזוהים כולל היפוך הגדול, לכידת ייצוג, מפל הכניעה ואיחוד סמכות</div>
-        <div class="tags">
-          <span class="tag">פילוסופיה</span>
-          <span class="tag">7 פתולוגיות</span>
-          <span class="tag">מסגרת אנליטית</span>
-        </div>
+        <h3>מחקר עומק — ערים</h3>
+        <div class="desc">ממשק הזנת מחקר עומק לערים — נתוני מדיניות עירונית, ועדות חברה וחינוך</div>
+        <div class="tags"><span class="tag">Gemini</span><span class="tag">ערים</span></div>
       </div>
-      <div class="card-status research">&#x25CB; מסגרת</div>
-    </div>
-
+      <div class="card-status gemini-status">&#x2022; Gemini</div>
+    </a>
+    <a class="card" href="https://gemini.google.com/gem/0dcc5b70233a" target="_blank">
+      <div class="card-icon" style="background:#f3eeff">&#x1F48E;</div>
+      <div class="card-body">
+        <h3>Gemini Gem — חוקר חינוך</h3>
+        <div class="desc">ג'ם מותאם אישית ב-Gemini למחקר עומק על תוכניות חינוכיות וארגונים</div>
+        <div class="tags"><span class="tag">Gemini Gem</span></div>
+      </div>
+      <div class="card-status gemini-status">&#x2022; Gem</div>
+    </a>
   </div>
 
-  <!-- ── Ecosystem ── -->
+  <!-- Ecosystem (static) -->
   <div class="ecosystem">
     <h3>מבנה האקוסיסטם</h3>
     <div class="eco-layers">
       <div class="eco-layer">
         <div class="eco-label foundation">יסוד</div>
-        <div class="eco-items"><span class="eco-item">עדשת הליבה — 7 דפוסי פתולוגיה</span></div>
+        <div class="eco-items"><span class="eco-item">עדשת הליבה — 7 דפוסי פתולוגיה</span><span class="eco-item">מסגרת + אלכסון</span></div>
       </div>
       <div class="eco-arrow">&#x2193;</div>
       <div class="eco-layer">
@@ -280,31 +233,34 @@ footer {
         <div class="eco-items">
           <span class="eco-item">SEL — האקדמיה למדעים</span>
           <span class="eco-item">UNESCO &#x2192; SDG4 &#x2192; משרד החינוך</span>
+          <span class="eco-item">שפ"י — הנחיות רשמיות</span>
         </div>
       </div>
       <div class="eco-arrow">&#x2193;</div>
       <div class="eco-layer">
         <div class="eco-label pedagogy">פדגוגיה</div>
         <div class="eco-items">
-          <span class="eco-item">חינוך ואידיאולוגיה — מיניסייט</span>
+          <span class="eco-item">חינוך ואידיאולוגיה</span>
           <span class="eco-item">אבן רוזטה — מיפוי שפה</span>
+          <span class="eco-item">SafeSchool — תוכן בית ספרי</span>
         </div>
       </div>
       <div class="eco-arrow">&#x2193;</div>
       <div class="eco-layer">
         <div class="eco-label empirical">ראיות אמפיריות</div>
         <div class="eco-items">
-          <span class="eco-item">דירוג 18 ערים</span>
-          <span class="eco-item">תוכניות חינוכיות</span>
-          <span class="eco-item">מעקב תקציבי</span>
+          <span class="eco-item">דירוג ערים — תוכניות חינוכיות</span>
+          <span class="eco-item">ייצוג קורבנות</span>
+          <span class="eco-item">IMA — אתיקה רפואית</span>
+          <span class="eco-item">אנתרופולוגיה של השתקה</span>
         </div>
       </div>
       <div class="eco-arrow">&#x2193;</div>
       <div class="eco-layer">
-        <div class="eco-label" style="color:#c0392b;">השפעה קהילתית</div>
+        <div class="eco-label gemini-l">כלי מחקר</div>
         <div class="eco-items">
-          <span class="eco-item">אנתרופולוגיה של השתקה — מועצת הורים</span>
-          <span class="eco-item">סובלנות מדכאת בפעולה (מרקוזה)</span>
+          <span class="eco-item">Gemini — מחקר עומק</span>
+          <span class="eco-item">תיבת מחקר פתוחה</span>
         </div>
       </div>
     </div>
@@ -312,9 +268,154 @@ footer {
 
 </div>
 
-<footer>
-  מפת פרויקטי מחקר חינוך ואידיאולוגיה &middot; פברואר 2026
-</footer>
+<footer id="footer"></footer>
+
+<script>
+// Topic definitions — display order, Hebrew names, icons
+var TOPICS = [
+  { id: 'research-philosophical', label: 'מסגרת ופילוסופיה', icon: '&#x1F52D;' },
+  { id: 'research-institutional', label: 'צינור מוסדי', icon: '&#x1F3DB;' },
+  { id: 'research-pedagogy',     label: 'פדגוגיה ומיפוי שפה', icon: '&#x1F4D6;' },
+  { id: 'research-org',          label: 'ארגון ספציפי', icon: '&#x1F3AF;' },
+  { id: 'research-empirical',    label: 'ראיות אמפיריות', icon: '&#x1F4CA;' },
+  { id: 'tools',                 label: 'כלים', icon: '&#x1F527;' },
+  { id: 'games',                 label: 'משחקים', icon: '&#x1F3AE;' },
+  { id: 'personal',              label: 'אישי', icon: '&#x1F3E0;' }
+];
+
+var activeFilter = 'all';
+
+function render(sites) {
+  // Stats
+  var researchCount = sites.filter(function(s) { return s.topic.startsWith('research'); }).length;
+  document.getElementById('hero-stats').textContent = sites.length + ' מיניסייטים | ' + researchCount + ' מחקריים';
+  document.getElementById('hero-meta').textContent = 'נוצר אוטומטית מ-minisites.json | מרץ 2026';
+  document.getElementById('footer').innerHTML = 'מפת פרויקטי מחקר חינוך ואידיאולוגיה &middot; ' + sites.length + ' מיניסייטים &middot; מרץ 2026';
+
+  // Filter bar
+  var filterBar = document.getElementById('filter-bar');
+  filterBar.innerHTML = '';
+  var allBtn = document.createElement('button');
+  allBtn.className = 'filter-btn active';
+  allBtn.innerHTML = 'הכל <span class="count">(' + sites.length + ')</span>';
+  allBtn.onclick = function() { activeFilter = 'all'; applyFilter(sites); };
+  filterBar.appendChild(allBtn);
+
+  TOPICS.forEach(function(t) {
+    var count = sites.filter(function(s) { return s.topic === t.id; }).length;
+    if (count === 0) return;
+    var btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.dataset.topic = t.id;
+    btn.innerHTML = t.label + ' <span class="count">(' + count + ')</span>';
+    btn.onclick = function() { activeFilter = t.id; applyFilter(sites); };
+    filterBar.appendChild(btn);
+  });
+
+  // Sections
+  renderSections(sites);
+}
+
+function applyFilter(sites) {
+  // Update filter buttons
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.classList.toggle('active',
+      (activeFilter === 'all' && !btn.dataset.topic) ||
+      btn.dataset.topic === activeFilter
+    );
+  });
+  renderSections(sites);
+}
+
+function renderSections(sites) {
+  var container = document.getElementById('sections-container');
+  container.innerHTML = '';
+
+  TOPICS.forEach(function(topic) {
+    var items = sites.filter(function(s) { return s.topic === topic.id; });
+    if (items.length === 0) return;
+    if (activeFilter !== 'all' && activeFilter !== topic.id) return;
+
+    // Section title
+    var title = document.createElement('div');
+    title.className = 'section-title';
+    title.innerHTML = '<span class="icon">' + topic.icon + '</span> ' + topic.label +
+      ' <span class="count-badge">' + items.length + '</span>';
+    container.appendChild(title);
+
+    // Cards grid
+    var grid = document.createElement('div');
+    grid.className = 'projects';
+
+    items.forEach(function(site) {
+      var card = document.createElement('a');
+      card.className = 'card';
+      card.href = site.url;
+      card.target = '_blank';
+
+      var iconDiv = document.createElement('div');
+      iconDiv.className = 'card-icon icon-bg-' + site.topic;
+      iconDiv.textContent = site.icon || '';
+
+      var bodyDiv = document.createElement('div');
+      bodyDiv.className = 'card-body';
+      var h3 = document.createElement('h3');
+      h3.textContent = site.title;
+      var desc = document.createElement('div');
+      desc.className = 'desc';
+      desc.textContent = site.description;
+      var tagsDiv = document.createElement('div');
+      tagsDiv.className = 'tags';
+      // Topic badge
+      var topicBadge = document.createElement('span');
+      topicBadge.className = 'topic-tag topic-' + site.topic;
+      topicBadge.textContent = topic.label;
+      tagsDiv.appendChild(topicBadge);
+      (site.tags || []).forEach(function(tag) {
+        var span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = tag;
+        tagsDiv.appendChild(span);
+      });
+      bodyDiv.appendChild(h3);
+      bodyDiv.appendChild(desc);
+      bodyDiv.appendChild(tagsDiv);
+
+      var statusDiv = document.createElement('div');
+      statusDiv.className = 'card-status topic-' + site.topic;
+      statusDiv.innerHTML = '&#x2022; ' + (site.status === 'live' ? 'באוויר' : site.status);
+
+      card.appendChild(iconDiv);
+      card.appendChild(bodyDiv);
+      card.appendChild(statusDiv);
+      grid.appendChild(card);
+    });
+
+    container.appendChild(grid);
+  });
+}
+
+// Load data
+fetch('minisites.json')
+  .then(function(r) { return r.json(); })
+  .then(render)
+  .catch(function(err) {
+    document.getElementById('sections-container').innerHTML =
+      '<p style="color:red;text-align:center">שגיאה בטעינת minisites.json: ' + err.message + '</p>';
+  });
+
+// Research box count
+(function() {
+  var el = document.getElementById('research-box-count');
+  fetch('https://gnostocracy.com/ranking/research_box.php')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (Array.isArray(data)) el.textContent = data.length + ' רשומות מחקר';
+      else el.textContent = '';
+    })
+    .catch(function() { el.textContent = ''; });
+})();
+</script>
 
 </body>
 </html>
